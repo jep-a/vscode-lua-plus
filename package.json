@@ -1,0 +1,28 @@
+{
+	"name": "lua-plus",
+	"displayName": "Lua Plus",
+	"description": "Improved Lua syntax highlighting",
+	"categories": ["Languages"],
+	"version": "1.0.0",
+	"publisher": "jep-a",
+	"author": {"name": "jep-a"},
+	"icon": "lua-plus.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jep-a/vscode-lua-plus.git"
+	},
+	"engines": {"vscode": "*"},
+	"contributes": {
+		"languages": [{
+			"id": "lua",
+			"extensions": [".lua"],
+			"aliases": ["Lua", "lua"],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "lua",
+			"scopeName": "source.lua",
+			"path": "./syntaxes/lua.json"
+		}]
+	}
+}
