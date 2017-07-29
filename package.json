@@ -3,7 +3,7 @@
 	"displayName": "Lua Plus",
 	"description": "Improved Lua syntax highlighting",
 	"categories": ["Languages"],
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "jep-a",
 	"author": {"name": "jep-a"},
 	"icon": "lua-plus.png",
