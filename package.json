@@ -2,27 +2,47 @@
 	"name": "lua-plus",
 	"displayName": "Lua Plus",
 	"description": "Improved Lua syntax highlighting",
-	"categories": ["Languages"],
-	"version": "1.0.1",
+	"categories": [
+		"Languages"
+	],
+	"version": "1.0.2",
 	"publisher": "jep-a",
-	"author": {"name": "jep-a"},
+	"author": {
+		"name": "jep-a"
+	},
 	"icon": "lua-plus.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/jep-a/vscode-lua-plus.git"
 	},
-	"engines": {"vscode": "*"},
+	"engines": {
+		"vscode": "*"
+	},
 	"contributes": {
-		"languages": [{
-			"id": "lua",
-			"extensions": [".lua"],
-			"aliases": ["Lua", "lua"],
-			"configuration": "./language-configuration.json"
-		}],
-		"grammars": [{
-			"language": "lua",
-			"scopeName": "source.lua",
-			"path": "./syntaxes/lua.json"
-		}]
+		"languages": [
+			{
+				"id": "lua",
+				"extensions": [
+					".lua"
+				],
+				"aliases": [
+					"Lua",
+					"lua"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "lua",
+				"scopeName": "source.lua",
+				"path": "./syntaxes/lua.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "b1a07478-38e2-429d-b12a-e41e735f5ca4",
+		"publisherDisplayName": "Jep Alaba",
+		"publisherId": "c1ed153c-351a-4c7a-9d53-8a846e40963f"
 	}
 }

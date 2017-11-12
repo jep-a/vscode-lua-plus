@@ -1,5 +1,5 @@
 ![Lua Plus Logo](./lua-plus.png)
-# Lua Plus v1.0.1
+# Lua Plus v1.0.2
 
 This extension improves the native Lua syntax found in Visual Studio Code. The following are a few examples of what scope names were added:
 

@@ -41,6 +41,21 @@
 					"include": "#multi-line-string"
 				},
 				{
+					"include": "#if"
+				},
+				{
+					"include": "#if-block"
+				},
+				{
+					"include": "#for-block"
+				},
+				{
+					"include": "#while-block"
+				},
+				{
+					"include": "#repeat-block"
+				},
+				{
 					"include": "#function"
 				},
 				{
@@ -62,21 +77,6 @@
 					"include": "#string-function-call"
 				},
 				{
-					"include": "#if"
-				},
-				{
-					"include": "#if-block"
-				},
-				{
-					"include": "#for-block"
-				},
-				{
-					"include": "#while-block"
-				},
-				{
-					"include": "#repeat-block"
-				},
-				{
 					"include": "#table"
 				},
 				{
@@ -92,6 +92,9 @@
 					"include": "#keyword"
 				},
 				{
+					"include": "#table-property"
+				},
+				{
 					"include": "#language-variable"
 				},
 				{
@@ -99,9 +102,6 @@
 				},
 				{
 					"include": "#variable"
-				},
-				{
-					"include": "#table-property"
 				}
 			]
 		},
@@ -193,6 +193,86 @@
 					"name": "punctuation.definition.string.end.lua"
 				}
 			}
+		},
+		"if-block": {
+			"name": "meta.if-block.lua meta.block.lua",
+			"begin": "\\bif\\b",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"end": "\\bend\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#general"
+				}
+			]
+		},
+		"for-block": {
+			"name": "meta.for-block.lua meta.block.lua",
+			"begin": "\\bfor\\b",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"end": "\\bend\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#general"
+				}
+			]
+		},
+		"while-block": {
+			"name": "meta.while-block.lua meta.block.lua",
+			"begin": "\\bwhile\\b",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"end": "\\bend\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#general"
+				}
+			]
+		},
+		"repeat-block": {
+			"name": "meta.repeat-block.lua meta.block.lua",
+			"begin": "\\brepeat\\b",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"end": "\\buntil\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#general"
+				}
+			]
 		},
 		"function": {
 			"name": "meta.function.lua",
@@ -369,87 +449,7 @@
 				}
 			]
 		},
-		"if-block": {
-			"name": "meta.if-block.lua meta.block.lua",
-			"begin": "\\bif\\b",
-			"beginCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"end": "\\bend\\b",
-			"endCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#general"
-				}
-			]
-		},
-		"for-block": {
-			"name": "meta.for-block.lua meta.block.lua",
-			"begin": "\\bfor\\b",
-			"beginCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"end": "\\bend\\b",
-			"endCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#general"
-				}
-			]
-		},
-		"while-block": {
-			"name": "meta.while-block.lua meta.block.lua",
-			"begin": "\\bwhile\\b",
-			"beginCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"end": "\\bend\\b",
-			"endCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#general"
-				}
-			]
-		},
-		"repeat-block": {
-			"name": "meta.repeat-block.lua meta.block.lua",
-			"begin": "\\brepeat\\b",
-			"beginCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"end": "\\buntil\\b",
-			"endCaptures": {
-				"0": {
-					"name": "keyword.control.lua"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#general"
-				}
-			]
-		},
-		"table":{
+		"table": {
 			"name": "meta.table.lua",
 			"begin": "{",
 			"end": "}",
@@ -459,7 +459,7 @@
 				}
 			]
 		},
-		"array":{
+		"array": {
 			"name": "meta.array.lua",
 			"begin": "\\[",
 			"end": "\\]",
@@ -480,7 +480,17 @@
 		"keyword": {
 			"name": "keyword.control.lua",
 			"match": "\\b(break|do|else|for|if|elseif|return|then|repeat|while|until|end|function|local|in)\\b"
-
+		},
+		"table-property": {
+			"match": "(\\.)([_[:alpha:]][_[:alnum:]]*)\\b(?!\\s*([\\({\\'\"]|\\[\\[))",
+			"captures": {
+				"1": {
+					"name": "punctuation.accessor"
+				},
+				"2": {
+					"name": "variable.other.table.property.lua"
+				}
+			}
 		},
 		"language-variable": {
 			"name": "variable.language.lua",
@@ -493,17 +503,6 @@
 		"variable": {
 			"name": "variable.other.lua",
 			"match": "\\b[_[:alpha:]][_[:alnum:]]*\\b"
-		},
-		"table-property": {
-			"match": "(\\.)([_[:alpha:]][_[:alnum:]]*)\\b(?!\\s*([\\({\\'\"]|\\[\\[))",
-			"captures": {
-				"1": {
-					"name": "punctuation.accessor"
-				},
-				"2": {
-					"name": "variable.other.table.property.lua"
-				}
-			}
 		}
 	}
 }
