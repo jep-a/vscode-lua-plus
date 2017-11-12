@@ -41,9 +41,6 @@
 					"include": "#multi-line-string"
 				},
 				{
-					"include": "#if"
-				},
-				{
 					"include": "#if-block"
 				},
 				{
@@ -54,6 +51,15 @@
 				},
 				{
 					"include": "#repeat-block"
+				},
+				{
+					"include": "#logic-operator"
+				},
+				{
+					"include": "#operator"
+				},
+				{
+					"include": "#keyword"
 				},
 				{
 					"include": "#function"
@@ -81,15 +87,6 @@
 				},
 				{
 					"include": "#array"
-				},
-				{
-					"include": "#logic-operator"
-				},
-				{
-					"include": "#operator"
-				},
-				{
-					"include": "#keyword"
 				},
 				{
 					"include": "#table-property"
@@ -273,6 +270,18 @@
 					"include": "#general"
 				}
 			]
+		},
+		"logic-operator": {
+			"name": "keyword.operator.logic.lua",
+			"match": "\\b(and|or|not)\\b"
+		},
+		"operator": {
+			"name": "keyword.operator.lua",
+			"match": "(\\+|-|%|#|\\*|\\/|\\^|==?|~=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.))"
+		},
+		"keyword": {
+			"name": "keyword.control.lua",
+			"match": "\\b(break|do|else|for|if|elseif|return|then|repeat|while|until|end|local|in)\\b"
 		},
 		"function": {
 			"name": "meta.function.lua",
@@ -468,18 +477,6 @@
 					"include": "#general"
 				}
 			]
-		},
-		"logic-operator": {
-			"name": "keyword.operator.logic.lua",
-			"match": "\\b(and|or|not)\\b"
-		},
-		"operator": {
-			"name": "keyword.operator.lua",
-			"match": "(\\+|-|%|#|\\*|\\/|\\^|==?|~=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.))"
-		},
-		"keyword": {
-			"name": "keyword.control.lua",
-			"match": "\\b(break|do|else|for|if|elseif|return|then|repeat|while|until|end|function|local|in)\\b"
 		},
 		"table-property": {
 			"match": "(\\.)([_[:alpha:]][_[:alnum:]]*)\\b(?!\\s*([\\({\\'\"]|\\[\\[))",
