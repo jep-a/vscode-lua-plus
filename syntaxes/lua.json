@@ -285,7 +285,7 @@
 		},
 		"function": {
 			"name": "meta.function.lua",
-			"begin": "\\b(local)?\\s+(function)\\s+([_[:alpha:]][_[:alnum:]]*)",
+			"begin": "\\b(?:(local)\\s+)?(function)\\s+([_[:alpha:]][_[:alnum:]]*)",
 			"beginCaptures": {
 				"1": {
 					"name": "storage.modifier.local.lua"
