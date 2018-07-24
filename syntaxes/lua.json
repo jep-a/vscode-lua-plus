@@ -62,13 +62,13 @@
 					"include": "#keyword"
 				},
 				{
+					"include": "#table-function"
+				},
+				{
 					"include": "#function"
 				},
 				{
 					"include": "#anonymous-function"
-				},
-				{
-					"include": "#table-function"
 				},
 				{
 					"include": "#support-function-call"
@@ -283,61 +283,27 @@
 			"name": "keyword.control.lua",
 			"match": "\\b(break|do|else|for|if|elseif|return|then|repeat|while|until|end|local|in)\\b"
 		},
-		"function": {
-			"name": "meta.function.lua",
-			"begin": "\\b(?:(local)\\s+)?(function)\\s+([_[:alpha:]][_[:alnum:]]*)",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.modifier.local.lua"
-				},
-				"2": {
-					"name": "storage.type.function.lua"
-				},
-				"3": {
-					"name": "entity.name.function.lua"
-				}
-			},
-			"end": "\\bend\\b",
-			"endCaptures": {
-				"0": {
-					"name": "keyword.control.function-end.lua"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#parameters"
-				},
-				{
-					"include": "#general"
-				}
-			]
-		},
-		"anonymous-function": {
-			"name": "meta.function.anonymous.lua",
-			"begin": "\\b(function)(?!\\s+[_[:alpha:]][_[:alnum:]]*)",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.type.function.anonymous.lua"
-				}
-			},
-			"end": "\\bend\\b",
-			"endCaptures": {
-				"0": {
-					"name": "keyword.control.function-end.lua"
-				}
-			},
-			"patterns": [
-				{
-					"include": "#parameters"
-				},
-				{
-					"include": "#general"
-				}
-			]
-		},
 		"table-function": {
 			"name": "meta.function.lua",
-			"begin": "\\b(function)\\s+(([_[:alpha:]][_[:alnum:]]*(?:\\.[_[:alpha:]][_[:alnum:]]*)*)(?:(\\.)([_[:alpha:]][_[:alnum:]]*)|(:)([_[:alpha:]][_[:alnum:]]*)))",
+			"begin": "(?=\\bfunction\\s+[_[:alpha:]][_[:alnum:]]*(?:\\.[_[:alpha:]][_[:alnum:]]*)*(?:\\.(?:[_[:alpha:]][_[:alnum:]]*)|:(?:[_[:alpha:]][_[:alnum:]]*)))",
+			"end": "\\bend\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.function-end.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#table-function-name"
+				},
+				{
+					"include": "#general"
+				}
+			]
+		},
+		"table-function-name": {
+			"name": "meta.function.lua",
+			"begin": "\\b(function)\\s+(([_[:alpha:]][_[:alnum:]]*(?:\\.[_[:alpha:]][_[:alnum:]]*)*)(?:(\\.)([_[:alpha:]][_[:alnum:]]*)|(:)([_[:alpha:]][_[:alnum:]]*)))(?=\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "storage.type.function.property.lua"
@@ -358,6 +324,16 @@
 					"name": "entity.name.method-function.lua entity.name.function.lua"
 				}
 			},
+			"end": "(?<=\\))",
+			"patterns": [
+				{
+					"include": "#parameters"
+				}
+			]
+		},
+		"function": {
+			"name": "meta.function.lua",
+			"begin": "(?=\\b(?:local\\s+)?function\\s+[_[:alpha:]][_[:alnum:]]*)",
 			"end": "\\bend\\b",
 			"endCaptures": {
 				"0": {
@@ -366,10 +342,69 @@
 			},
 			"patterns": [
 				{
-					"include": "#parameters"
+					"include": "#function-name"
 				},
 				{
 					"include": "#general"
+				}
+			]
+		},
+		"function-name": {
+			"name": "meta.function.lua",
+			"begin": "\\b(?:(local)\\s+)?(function)\\s+([_[:alpha:]][_[:alnum:]]*)(?=\\()",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.modifier.local.lua"
+				},
+				"2": {
+					"name": "storage.type.function.lua"
+				},
+				"3": {
+					"name": "entity.name.function.lua"
+				}
+			},
+			"end": "(?<=\\))",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.function-end.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#parameters"
+				}
+			]
+		},
+		"anonymous-function": {
+			"name": "meta.function.anonymous.lua",
+			"begin": "(?=\\bfunction(?!\\s+[_[:alpha:]][_[:alnum:]]*))",
+			"end": "\\bend\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.function-end.lua"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#anonymous-function-name"
+				},
+				{
+					"include": "#general"
+				}
+			]
+		},
+		"anonymous-function-name": {
+			"name": "meta.function.anonymous.lua",
+			"begin": "\\b(function)\\s*(?!\\s+[_[:alpha:]][_[:alnum:]]*)(?=\\()",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.function.anonymous.lua"
+				}
+			},
+			"end": "(?<=\\))",
+			"patterns": [
+				{
+					"include": "#parameters"
 				}
 			]
 		},
