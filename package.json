@@ -23,7 +23,8 @@
 			{
 				"id": "lua",
 				"extensions": [
-					".lua"
+					".lua",
+					".luacheckrc"
 				],
 				"aliases": [
 					"Lua",
