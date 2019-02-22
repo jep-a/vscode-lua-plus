@@ -128,7 +128,7 @@
 		},
 		"constant": {
 			"name": "constant.language.lua",
-			"match": "nil|true|false|_G|_VERSION|\\.\\.\\."
+			"match": "\\b(nil|true|false|_G|_VERSION|\\.\\.\\.)\\b"
 		},
 		"number": {
 			"name": "constant.numeric.lua",
