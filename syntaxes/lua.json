@@ -424,6 +424,12 @@
 			},
 			"patterns": [
 				{
+					"include":"#line-comment"
+				},
+				{
+					"include":"#block-comment"
+				},
+				{
 					"name": "punctuation.separator.parameter.lua",
 					"match": ","
 				},
